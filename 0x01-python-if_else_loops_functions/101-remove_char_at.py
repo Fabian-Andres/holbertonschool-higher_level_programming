@@ -5,4 +5,3 @@ def remove_char_at(str, n):
         return (newStr)
     else:
         return (str)
-
