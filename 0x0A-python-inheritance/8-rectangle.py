@@ -1,6 +1,6 @@
 #!/usr/bin/python3
+"""[Rectangle class]"""
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
-"""[BaseGeometry class]"""
 
 
 class Rectangle(BaseGeometry):
