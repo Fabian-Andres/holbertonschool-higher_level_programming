@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-"""[MyList]"""
+"""[MyList Class]"""
 
 
 class MyList(list):
-    """[MyList Class]
-
-    Arguments:
-        list {[type]} -- [Class that prints the sorted list]
+    """[Class that prints the sorted list]
     """
     def print_sorted(self):
+        """[print_sorted function]
+        """
         print(sorted(self))
