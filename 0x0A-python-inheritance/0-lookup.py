@@ -1,12 +1,11 @@
-#!/urs/bin/ptython3
-"""[lookup]"""
+#!/urs/bin/python3
+"""[lookup function]"""
 
 
 def lookup(obj):
-    """[lookup function]
+    """[Returns the list of available attributes and methods of an object]
 
     Arguments:
-        obj {[type]} -- [Returns the list of available
-                        attributes and methods of an object:]
+        obj {[str]} -- [list object]
     """
     return (dir(obj))
