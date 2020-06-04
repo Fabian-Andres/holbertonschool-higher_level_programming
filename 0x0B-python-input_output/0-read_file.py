@@ -9,7 +9,6 @@ def read_file(filename=""):
         filename {str} -- [String to prints it to stdout:]
         (default: {""})
     """
-    with open(filename, mode='r', encoding="utf-8") as file:
+    with open(filename, encoding="utf-8") as file:
         print(file.read())
 
-    file.closed()
