@@ -6,11 +6,11 @@ load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
 
 
 try:
-    file = load_from_json_file("add_item.json")
+    obj = load_from_json_file("add_item.json")
 except:
-    file = []
+    obj = []
 
 for i in range(1, len(argv)):
-    l.append(argv[i])
+    obj.append(argv[i])
 
-save_to_json_file(l, "add_item.json")
+save_to_json_file(obj, "add_item.json")
