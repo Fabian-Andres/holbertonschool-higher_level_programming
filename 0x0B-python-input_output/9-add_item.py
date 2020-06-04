@@ -6,9 +6,9 @@ load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
 
 
 try:
-    l = load_from_json_file("add_item.json")
+    file = load_from_json_file("add_item.json")
 except:
-    l = []
+    file = []
 
 for i in range(1, len(argv)):
     l.append(argv[i])
