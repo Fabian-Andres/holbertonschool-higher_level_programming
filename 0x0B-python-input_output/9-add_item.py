@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """[load_save_json_file function]"""
-from sys
+import sys
 save_to_json_file = __import__('7-save_to_json_file').save_to_json_file
 load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
 
