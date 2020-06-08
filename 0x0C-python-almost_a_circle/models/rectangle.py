@@ -53,3 +53,11 @@ class Rectangle(Base):
         else:
             if value <= 0:
                 raise ValueError("%s must be > 0" % name)
+
+    def area(self):
+        """[Function area]
+
+        Returns:
+            [int]: [return area of rectangle]
+        """
+        return self.__width * self.__height
