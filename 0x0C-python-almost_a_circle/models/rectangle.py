@@ -65,7 +65,20 @@ class Rectangle(Base):
     def display(self):
         """[Function prints in stdout the Rectangle]
         """
+        for j in range(self.__x):
+            print()
         for i in range(self.__height):
+            for k in range(self.__y):
+                print(" ", end="")
             for y in range(self.__width):
                 print("#", end="")
             print()
+
+    def __str__(self):
+        """[str function]
+
+        Returns:
+            [type]: [Values of the rectangle class]
+        """
+        return "[rectangle] (%i) %i/%i - %i/%i" % \
+            (self.id, self.__x, self.__y, self.__width, self.__height)
