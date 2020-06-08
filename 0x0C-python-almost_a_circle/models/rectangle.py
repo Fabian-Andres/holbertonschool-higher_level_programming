@@ -83,9 +83,12 @@ class Rectangle(Base):
         return "[rectangle] (%i) %i/%i - %i/%i" % \
             (self.id, self.__x, self.__y, self.__width, self.__height)
 
-    def update(self, *args):
-        # print("args ", args)
+    def update(self, *args, **kwargs):
+        """[Function update]
+        """
+        a = 0
         for i in range(len(args)):
+            a += 1
             if i == 0:
                 self.id = args[i]
             elif i == 1:
@@ -98,3 +101,17 @@ class Rectangle(Base):
                 self.__y = args[i]
             else:
                 return
+
+        if a == 0:
+            if kwargs is not None:
+                for key, value in kwargs.items():
+                    if key == "id":
+                        self.id = value
+                    elif key == "width":
+                        self.__width = value
+                    elif key == "height":
+                        self.__height = value
+                    elif key == "x":
+                        self.__x = value
+                    elif key == "y":
+                        self.__y = value
