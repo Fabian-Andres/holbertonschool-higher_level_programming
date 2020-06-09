@@ -18,13 +18,13 @@ class Rectangle(Base):
             x {[int]} -- [initialize position x]
             y {[int]} -- [initialize coordinate y]
         """
-        self.__width = width
+        self.width = width
         self.integer_validator("width", width)
-        self.__height = height
+        self.height = height
         self.integer_validator("height", height)
-        self.__x = x
+        self.x = x
         self.integer_validator("x", x)
-        self.__y = y
+        self.y = y
         self.integer_validator("y", y)
         if id is not None:
             self.id = id
@@ -60,17 +60,17 @@ class Rectangle(Base):
         Returns:
             [int]: [return area of rectangle]
         """
-        return self.__width * self.__height
+        return self.width * self.height
 
     def display(self):
         """[Function prints in stdout the Rectangle]
         """
-        for j in range(self.__x):
+        for j in range(self.x):
             print()
-        for i in range(self.__height):
-            for k in range(self.__y):
+        for i in range(self.height):
+            for k in range(self.y):
                 print(" ", end="")
-            for y in range(self.__width):
+            for y in range(self.width):
                 print("#", end="")
             print()
 
@@ -81,7 +81,7 @@ class Rectangle(Base):
             [type]: [Values of the rectangle class]
         """
         return "[rectangle] (%i) %i/%i - %i/%i" % \
-            (self.id, self.__x, self.__y, self.__width, self.__height)
+            (self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args, **kwargs):
         """[Function update]
@@ -92,13 +92,13 @@ class Rectangle(Base):
             if i == 0:
                 self.id = args[i]
             elif i == 1:
-                self.__width = args[i]
+                self.width = args[i]
             elif i == 2:
-                self.__height = args[i]
+                self.height = args[i]
             elif i == 3:
-                self.__x = args[i]
+                self.x = args[i]
             elif i == 4:
-                self.__y = args[i]
+                self.y = args[i]
             else:
                 return
 
@@ -108,10 +108,10 @@ class Rectangle(Base):
                     if key == "id":
                         self.id = value
                     elif key == "width":
-                        self.__width = value
+                        self.width = value
                     elif key == "height":
-                        self.__height = value
+                        self.height = value
                     elif key == "x":
-                        self.__x = value
+                        self.x = value
                     elif key == "y":
-                        self.__y = value
+                        self.y = value
