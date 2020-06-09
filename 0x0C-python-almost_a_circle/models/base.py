@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """[Base class]"""
 import json
+import re
 
 
 class Base:
@@ -52,6 +53,25 @@ class Base:
         new_json += "]"
         return new_json
 
+    @staticmethod
+    def from_json_string(json_string):
+        """[from json string]
+
+        Args:
+            json_string ([str]): [json string]
+
+        Returns:
+            [type]: [returns the list of the JSON string
+            representation json_string]
+        """
+        new_list = []
+        if json_string is None or json_string == "":
+            return new_list
+        f = re.findall("{.*?}", json_string)
+        for i in f:
+            new_list.append(json.loads(i))
+        return new_list
+
     @classmethod
     def save_to_file(cls, list_objs):
         """[save to file function]
@@ -65,3 +85,26 @@ class Base:
                 l.append(item.to_dictionary())
         with open("%s.json" % cls.__name__, mode='w') as f:
             f.write(Base.to_json_string(l))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """[Create function]
+
+        Returns:
+            [type]: [returns an instance with all attributes already set]
+        """
+        if cls.__name__ == "Rectangle":
+            a = cls(1, 1, 1, 1, 1)
+            a.update(
+                id=dictionary["id"], width=dictionary["width"],
+                height=dictionary["height"], x=dictionary["x"],
+                y=dictionary["y"])
+            return a
+        elif cls.__name__ == "Square":
+            b = cls(1, 1, 1, 1)
+            b.update(
+                id=dictionary["id"], size=dictionary["size"],
+                x=dictionary["x"], y=dictionary["y"])
+            return b
+        else:
+            return None
