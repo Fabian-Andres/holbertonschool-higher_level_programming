@@ -128,7 +128,7 @@ class Rectangle(Base):
         Returns:
             [type]: [Values of the rectangle class]
         """
-        return "[rectangle] (%i) %i/%i - %i/%i" % \
+        return "[rectangle] (%d) %d/%d - %d/%d" % \
             (self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args, **kwargs):
