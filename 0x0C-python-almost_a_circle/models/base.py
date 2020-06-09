@@ -2,6 +2,7 @@
 """[Base class]"""
 import json
 import re
+from inspect import getargspec
 
 
 class Base:
@@ -94,17 +95,34 @@ class Base:
             [type]: [returns an instance with all attributes already set]
         """
         if cls.__name__ == "Rectangle":
-            a = cls(1, 1, 1, 1, 1)
-            a.update(
+            atr1 = cls(1, 1, 1, 1, 1)
+            atr1.update(
                 id=dictionary["id"], width=dictionary["width"],
                 height=dictionary["height"], x=dictionary["x"],
                 y=dictionary["y"])
-            return a
+            return atr1
         elif cls.__name__ == "Square":
-            b = cls(1, 1, 1, 1)
-            b.update(
+            atr2 = cls(1, 1, 1, 1)
+            atr2.update(
                 id=dictionary["id"], size=dictionary["size"],
                 x=dictionary["x"], y=dictionary["y"])
-            return b
+            return atr2
         else:
             return None
+
+    @classmethod
+    def load_from_file(cls):
+        """[Load from file function]
+
+        Returns:
+            [list]: [returns a list of instances]
+        """
+        new_list = []
+        try:
+            with open("%s.json" % cls.__name__, mode='r') as f:
+                file = cls.from_json_string(f.read())
+                for i in file:
+                    new_list.append(cls.create(**i))
+        except Exception:
+            pass
+        return new_list
