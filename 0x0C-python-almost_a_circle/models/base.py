@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """[Base class]"""
+import json
 
 
 class Base:
@@ -21,4 +22,32 @@ class Base:
         else:
             type(self).__nb_objects += 1
             self.id = type(self).__nb_objects
-    
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """[summary]
+
+        Args:
+            list_dictionaries ([type]): [list of dictionaries]
+
+        Raises:
+            TypeError: [The list not contain dictionaries]
+
+        Returns:
+            [dict]: [JSON string representation of list_dictionaries]
+        """
+        if not list_dictionaries:
+            return "[]"
+
+        for i in range(len(list_dictionaries)):
+            if type(list_dictionaries[i]) is not dict:
+                raise TypeError("The list not contain dictionaries")
+
+        new_json = "["
+        for j in range(len(list_dictionaries)):
+            if j < i:
+                new_json += json.dumps(list_dictionaries[j]) + ", "
+            else:
+                new_json += json.dumps(list_dictionaries[j])
+        new_json += "]"
+        return new_json
