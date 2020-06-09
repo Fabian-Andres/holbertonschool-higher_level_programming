@@ -15,14 +15,15 @@ class Square(Rectangle):
         """[summary]
 
         Args:
-            size ([type]): [description]
-            x (int, optional): [description]. Defaults to 0.
-            y (int, optional): [description]. Defaults to 0.
-            id ([type], optional): [description]. Defaults to None.
+            size ([type]): [size of square]
+            x (int, optional): [initialize position x].
+                Defaults to 0.
+            y (int, optional): [initialize position x].
+                Defaults to 0.
+            id ([type], optional): [id of base]. Defaults to None.
         """
 
         super().__init__(size, size, x, y, id)
-
 
     def __str__(self):
         """[str function]
@@ -33,3 +34,21 @@ class Square(Rectangle):
         return "[Square] (%i) %i/%i - %i" % \
             (self.id, self.x, self.y, self.height)
 
+    @property
+    def size(self):
+        """[Size property]
+
+        Returns:
+            [type]: [size square]
+        """
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """[Size seter]
+
+        Args:
+            value ([int]): [Value size of higth and with]
+        """
+        self.width = value
+        self.height = value
