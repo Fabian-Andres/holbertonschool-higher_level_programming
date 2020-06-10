@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """[Base class]"""
 import json
+import csv
 import re
 from inspect import getargspec
 
@@ -87,12 +88,21 @@ class Base:
         Returns:
             [type]: [returns an instance with all attributes already set]
         """
-        if cls.__name__ == 'Rectangle':
-            new_dict = cls(1, 1)
-        elif cls.__name__ == 'Square':
-            new_dict = cls(1)
-        new_dict.update(**dictionary)
-        return new_dict
+        if cls.__name__ == "Rectangle":
+            atr1 = cls(1, 1, 1, 1, 1)
+            atr1.update(
+                id=dictionary["id"], width=dictionary["width"],
+                height=dictionary["height"], x=dictionary["x"],
+                y=dictionary["y"])
+            return atr1
+        elif cls.__name__ == "Square":
+            atr2 = cls(1, 1, 1, 1)
+            atr2.update(
+                id=dictionary["id"], size=dictionary["size"],
+                x=dictionary["x"], y=dictionary["y"])
+            return atr2
+        else:
+            return None
 
     @classmethod
     def load_from_file(cls):
@@ -104,6 +114,37 @@ class Base:
         new_list = []
         try:
             with open("%s.json" % cls.__name__, mode='r') as f:
+                file = cls.from_json_string(f.read())
+                for i in file:
+                    new_list.append(cls.create(**i))
+        except Exception:
+            pass
+        return new_list
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """[save to file function]
+
+        Args:
+            list_objs ([type]): [Objects list to write]
+        """
+        l = []
+        if list_objs is not None:
+            for item in list_objs:
+                l.append(item.to_dictionary())
+        with open("%s.csv" % cls.__name__, mode='w') as f:
+            f.write(Base.to_json_string(l))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """[Load from file function]
+
+        Returns:
+            [list]: [returns a list of instances]
+        """
+        new_list = []
+        try:
+            with open("%s.csv" % cls.__name__, mode='r') as f:
                 file = cls.from_json_string(f.read())
                 for i in file:
                     new_list.append(cls.create(**i))
