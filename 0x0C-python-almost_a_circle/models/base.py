@@ -39,10 +39,10 @@ class Base:
         Returns:
             [dict]: [JSON string representation of list_dictionaries]
         """
-        if list_dictionaries in [None, []]:
-            return "[]"
-        else:
+        if list_dictionaries:
             return json.dumps(list_dictionaries)
+        else:
+            return "[]"
 
     @staticmethod
     def from_json_string(json_string):
