@@ -147,8 +147,6 @@ class Rectangle(Base):
                 self.x = args[i]
             elif i == 4:
                 self.y = args[i]
-            else:
-                return
 
         if a == 0:
             if kwargs is not None:
