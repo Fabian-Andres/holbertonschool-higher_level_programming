@@ -38,7 +38,7 @@ class Base:
         Returns:
             [dict]: [JSON string representation of list_dictionaries]
         """
-        if not list_dictionaries:
+        if not list_dictionaries or list_dictionaries is None:
             return "[]"
 
         for i in range(len(list_dictionaries)):
