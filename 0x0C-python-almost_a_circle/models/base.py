@@ -41,12 +41,8 @@ class Base:
         """
         if list_dictionaries in [None, []]:
             return "[]"
-
-        for i in range(len(list_dictionaries)):
-            if type(list_dictionaries[i]) is not dict:
-                raise TypeError("The list not contain dictionaries")
-
-        return json.dumps(list_dictionaries)
+        else:
+            return json.dumps(list_dictionaries)
 
     @staticmethod
     def from_json_string(json_string):
