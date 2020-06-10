@@ -81,11 +81,14 @@ class Square(Rectangle):
                         self.y = value
 
     def to_dictionary(self):
-        """[Dictionary function]
+        """Public Method that gives the instance as a dict
+
+        Returns:
+            [dict]: instance representation
         """
-        d = dict()
-        d["id"] = self.id
-        d["size"] = self.size
-        d["x"] = self.x
-        d["y"] = self.y
-        return d
+        return {
+            "id": self.id,
+            "x": self.x,
+            "size": self.width,
+            "y": self.y
+        }
