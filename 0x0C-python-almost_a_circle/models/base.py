@@ -38,21 +38,14 @@ class Base:
         Returns:
             [dict]: [JSON string representation of list_dictionaries]
         """
-        if not list_dictionaries or list_dictionaries is None:
+        if list_dictionaries in [None, []]:
             return "[]"
 
         for i in range(len(list_dictionaries)):
             if type(list_dictionaries[i]) is not dict:
                 raise TypeError("The list not contain dictionaries")
 
-        new_json = "["
-        for j in range(len(list_dictionaries)):
-            if j < i:
-                new_json += json.dumps(list_dictionaries[j]) + ", "
-            else:
-                new_json += json.dumps(list_dictionaries[j])
-        new_json += "]"
-        return new_json
+        return json.dumps(list_dictionaries)
 
     @staticmethod
     def from_json_string(json_string):
@@ -94,21 +87,12 @@ class Base:
         Returns:
             [type]: [returns an instance with all attributes already set]
         """
-        if cls.__name__ == "Rectangle":
-            atr1 = cls(1, 1, 1, 1, 1)
-            atr1.update(
-                id=dictionary["id"], width=dictionary["width"],
-                height=dictionary["height"], x=dictionary["x"],
-                y=dictionary["y"])
-            return atr1
-        elif cls.__name__ == "Square":
-            atr2 = cls(1, 1, 1, 1)
-            atr2.update(
-                id=dictionary["id"], size=dictionary["size"],
-                x=dictionary["x"], y=dictionary["y"])
-            return atr2
-        else:
-            return None
+        if cls.__name__ == 'Rectangle':
+            new_dict = cls(1, 1)
+        elif cls.__name__ == 'Square':
+            new_dict = cls(1)
+        new_dict.update(**dictionary)
+        return new_dict
 
     @classmethod
     def load_from_file(cls):
