@@ -33,9 +33,6 @@ class Base:
         Args:
             list_dictionaries ([type]): [list of dictionaries]
 
-        Raises:
-            TypeError: [The list not contain dictionaries]
-
         Returns:
             [dict]: [JSON string representation of list_dictionaries]
         """
