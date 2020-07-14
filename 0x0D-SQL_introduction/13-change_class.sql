@@ -1,2 +1,2 @@
--- select the best
-DELETE from second_table where score <= 5;
+-- change class
+DELETE FROM second_table WHERE score <= 5 ORDER BY score DESC;
