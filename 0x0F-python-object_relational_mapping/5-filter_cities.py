@@ -20,17 +20,15 @@ if __name__ == "__main__":
         cur = db.cursor()
         cur.execute("SELECT c.name FROM cities AS c\
                     JOIN states AS s ON c.state_id = s.id\
-                    AND s.name LIKE BINARY '{:s}'\
+                    WHERE s.name LIKE BINARY '{:s}'\
                     ORDER BY c.id ASC".format(db_search))
         rows = cur.fetchall()
 
-        count = len(rows)
+        list_states = []
         for row in rows:
-            if count != 1:
-                print("%s, " % row, end="")
-            else:
-                print("%s" % row)
-            count -= 1
+            list_states.append(row[0])
+
+        print(", ".join(list_states))
 
         cur.close()
         db.close()
