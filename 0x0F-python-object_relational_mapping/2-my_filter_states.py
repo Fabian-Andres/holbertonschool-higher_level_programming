@@ -17,9 +17,9 @@ if __name__ == "__main__":
     )
 
     cur = db.cursor()
-    select_search = "SELECT id, name FROM states\
-                    WHERE name = %(db_search)s ORDER BY id ASC"
-    cur.execute(select_search, {'db_search': db_search})
+    cur.execute("SELECT id, name FROM states\
+                WHERE name = '{:s}' ORDER BY id ASC"
+                .format(db_search))
     rows = cur.fetchall()
 
     for row in rows:
