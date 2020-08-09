@@ -18,7 +18,8 @@ if __name__ == "__main__":
 
     cur = db.cursor()
     cur.execute("SELECT id, name FROM states\
-                WHERE name LIKE BINARY %(db_search)s ORDER BY id ASC", {'db_search': db_search})
+                WHERE name LIKE BINARY %(db_search)s\
+                ORDER BY id ASC", {'db_search': db_search})
     rows = cur.fetchall()
 
     for row in rows:
