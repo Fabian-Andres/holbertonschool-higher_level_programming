@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
         cur = db.cursor()
         cur.execute("SELECT c.name FROM cities AS c\
-                    INNER JOIN states AS s ON c.state_id = s.id\
+                    JOIN states AS s ON c.state_id = s.id\
                     AND s.name LIKE BINARY '{:s}'\
                     ORDER BY c.id ASC".format(db_search))
         rows = cur.fetchall()
