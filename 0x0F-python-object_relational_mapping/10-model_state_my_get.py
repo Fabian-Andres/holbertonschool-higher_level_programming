@@ -13,10 +13,9 @@ if __name__ == "__main__":
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).filter(State.name.like(sys.argv[4]))
+    first_state = session.query(State).filter(State.name.like(sys.argv[4])).first()
 
-    for state in states:
-        if state.name:
-            print(state.id)
-        else:
-            print("Not found")
+    if first_state:
+        print(first_state.id)
+    else:
+        print("Not found")
