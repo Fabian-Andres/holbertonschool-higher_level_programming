@@ -15,7 +15,7 @@ if __name__ == "__main__":
     session = Session()
     first_state = session.query(State).first()
 
-    if first_state != "":
+    if first_state:
         print("%s: %s" % (first_state.id, first_state.name))
     else:
         print("Nothing")
