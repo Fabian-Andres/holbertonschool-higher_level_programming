@@ -1,25 +1,26 @@
 #!/usr/bin/python3
 # Find the peak
 
+
 def find_peak(list_of_integers):
-    peak = 0
+    """ Function peak """
 
     if not list_of_integers:
         return None
 
-    for i in range(0, len(list_of_integers)):
-        try:
-            next_num = list_of_integers[i+1]
-        except:
-            next_num = 0
-        try:
-            prev_num = list_of_integers[i-1]
-        except:
-            next_num = 0
+    len_list = len(list_of_integers)
 
+    if len_list == 1:
+        return list_of_integers[0]
+    if list_of_integers[0] >= list_of_integers[1]:
+        return list_of_integers[0]
+    if list_of_integers[len_list - 1] >= list_of_integers[len_list - 2]:
+        return list_of_integers[len_list - 1]
+
+    for i in range(1, len(list_of_integers) - 1):
+        next_num = list_of_integers[i + 1]
+        prev_num = list_of_integers[i - 1]
         current = list_of_integers[i]
 
         if current > next_num and current > prev_num:
-            peak = current
-
-    return peak
+            return current
