@@ -10,7 +10,6 @@ if __name__ == "__main__":
     email = sys.argv[2]
     values = {'email': email}
 
-
     """ Setting of data """
     data = urllib.parse.urlencode(values)
     data = data.encode('ascii')
