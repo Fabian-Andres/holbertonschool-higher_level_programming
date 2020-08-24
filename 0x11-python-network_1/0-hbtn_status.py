@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# hbtn status
+""" hbtn status """
 import urllib.request
 
 
