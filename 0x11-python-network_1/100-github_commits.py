@@ -10,7 +10,10 @@ if __name__ == "__main__":
     url = 'https://api.github.com/repos/'+owner+'/'+repo+'/commits'
 
     req = requests.get(url)
-    data = req.json()
-    for i in range(0, 10):
-        print("%s: %s" % (data[i].get('sha'),
-              data[i].get('commit').get('author').get('name')))
+    try:
+        data = req.json()
+        for i in range(0, 10):
+            print("%s: %s" % (data[i].get('sha'),
+                data[i].get('commit').get('author').get('name')))
+    except IndexError:
+        pass
