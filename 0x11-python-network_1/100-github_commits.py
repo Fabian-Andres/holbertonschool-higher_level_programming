@@ -12,4 +12,4 @@ if __name__ == "__main__":
     req = requests.get(url)
     data = req.json()
     for i in range(0, 10):
-        print("%s: %s" % (data[i]['sha'], data[i]['author']['login']))
+        print("%s: %s" % (data[i]['sha'], data[i]['commit']['author']['name']))
