@@ -5,17 +5,21 @@ import sys
 
 if __name__ == "__main__":
     """ init variables """
-    url = 'http://0.0.0.0:5000/search_user'
+    url = 'http://ff38d7df.hbtn-cod.io:5000/search_user'
     if len(sys.argv) > 1:
-        query = sys.argv[1]
+        q = sys.argv[1]
     else:
-        query = ""
+        q = ""
 
-    values = {'q': query}
+    values = {'q': q}
 
     """ Sending data """
     html = requests.post(url, data=values)
-    data = html.json()
+
+    try:
+        data = html.json()
+    except ValueError:
+        print("Not a valid JSON")
 
     if len(data) == 0:
         print("No result")
