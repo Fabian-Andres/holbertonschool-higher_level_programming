@@ -8,6 +8,7 @@ if __name__ == "__main__":
     password = sys.argv[2]
     url = 'https://api.github.com/user'
 
-    req = requests.get(url, params={'login': username}, auth=(username, password))
+    req = requests.get(url, params={'login': username},
+                       auth=(username, password))
     data = req.json()
     print(data.get('id'))
