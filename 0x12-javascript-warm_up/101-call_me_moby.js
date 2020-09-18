@@ -1,6 +1,6 @@
 #!/usr/bin/node
 /*
-|   Function that executes x times a function.
+|   Function that modifies the value of myVar to 333
 */
 exports.callMeMoby = function (x, theFunction) {
   for (let i = 0; i < x; i++) {
