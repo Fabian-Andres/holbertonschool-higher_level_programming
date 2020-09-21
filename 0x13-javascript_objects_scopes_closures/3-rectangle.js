@@ -11,7 +11,7 @@ class Rectangle {
   }
 
   // Print rectangle
-  print() {
+  print () {
     for (let i = 0; i < this.height; i++) {
       let str = 'X';
       for (let j = 1; j < this.width; j++) {
