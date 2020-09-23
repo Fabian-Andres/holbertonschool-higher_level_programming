@@ -5,7 +5,7 @@ request(url, function (error, response, body) {
   if (error) {
     console.log(error);
   } else {
-    const res = JSON.parse(body).results;
+    const res = JSON.parse(response && body).results;
     let count = 0;
     for (const key in res) {
       if (res[key].characters.includes('https://swapi-api.hbtn.io/api/people/18/')) {
